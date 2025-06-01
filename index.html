@@ -1,92 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio of Surendra Giri, a Web Developer specializing in Python, Django, and AI technologies.">
-    <meta name="keywords" content="frontend developer, portfolio, Python, Django, Machine Learning, Data Science">
+    <meta name="description"
+        content="Portfolio of Surendra Giri, a Web Developer specializing in Python, Django, and AI technologies.">
+    <meta name="keywords" content="Python, Django, Machine Learning, Data Science">
     <meta name="author" content="Surendra Giri">
-    <title>Surendra Giri | AI & Web Developer</title>
+    <title>Surendra Giri | Aspiring Data Science</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.22.9/babel.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-    * {
-        font-family: 'Inter', sans-serif;
-        color: #f0f0f0;
-    }
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+            color: #f0f0f0;
+        }
+        #contact .fab {
+            color: inherit;
+        }
 
-    html {
-        scroll-behavior: smooth;
-        background-color: #0a0a0a;
-    }
+        html {
+            scroll-behavior: smooth;
+            background-color: #0a0a0a;
+        }
 
-    .glass {
-        background: rgba(20, 20, 20, 0.6);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-    }
+        .glass {
+            background: rgba(20, 20, 20, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-    .gradient-text {
-        background: linear-gradient(135deg, #999999 0%, #ffffff 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
+        .gradient-text {
+            background: linear-gradient(135deg, #999999 0%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-    .animated-bg {
-        background: linear-gradient(-45deg, #0a0a0a, #1a1a1a, #222222, #111111);
-        background-size: 400% 400%;
-        animation: gradientShift 15s ease infinite;
-    }
+        .animated-bg {
+            background: linear-gradient(-45deg, #0a0a0a, #1a1a1a, #222222, #111111);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
 
-    @keyframes gradientShift {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
 
-    .fade-in {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.8s ease;
-    }
+            50% {
+                background-position: 100% 50%;
+            }
 
-    .fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
 
-    .hover-glow:hover {
-        box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
-        transform: translateY(-5px);
-    }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
 
-    .typing::after {
-        content: '|';
-        animation: blink 1s infinite;
-        color: #ffffff;
-    }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-    @keyframes blink {
-        0%, 50% { opacity: 1; }
-        51%, 100% { opacity: 0; }
-    }
-</style>
+        .hover-glow:hover {
+            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .typing::after {
+            content: '|';
+            animation: blink 1s infinite;
+            color: #ffffff;
+        }
+
+        @keyframes blink {
+
+            0%,
+            50% {
+                opacity: 1;
+            }
+
+            51%,
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
 
 </head>
+
 <body class="bg-gray-50 text-gray-800">
     <div id="root"></div>
 
     <script type="text/babel">
         const { useState, useEffect } = React;
-        
+
         const Nav = () => {
             const [isScrolled, setIsScrolled] = useState(false);
-            
+
             useEffect(() => {
                 const handleScroll = () => {
                     setIsScrolled(window.scrollY > 50);
@@ -94,21 +118,20 @@
                 window.addEventListener('scroll', handleScroll);
                 return () => window.removeEventListener('scroll', handleScroll);
             }, []);
-            
+
             return (
-                <nav className={`fixed w-full z-50 transition-all duration-300 ${
-                    isScrolled ? 'glass shadow-2xl py-2' : 'bg-transparent py-4'
-                }`}>
+                <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'glass shadow-2xl py-2' : 'bg-transparent py-4'
+                    }`}>
                     <div className="container mx-auto px-6 flex justify-between items-center">
                         <a href="#home" className="text-2xl font-bold gradient-text">
                             Surendra Giri
                         </a>
-                        
+
                         <div className="hidden md:flex space-x-8">
                             {['Home', 'About', 'Projects', 'Skills', 'Blog', 'Resume', 'Contact'].map((item) => (
-                                <a 
+                                <a
                                     key={item}
-                                    href={`#${item.toLowerCase()}`} 
+                                    href={`#${item.toLowerCase()}`}
                                     className="text-white hover:text-indigo-300 transition-all duration-300 font-medium relative group"
                                 >
                                     {item}
@@ -125,30 +148,30 @@
             const [displayText, setDisplayText] = useState('');
             const [currentIndex, setCurrentIndex] = useState(0);
             const [isDeleting, setIsDeleting] = useState(false);
-            
+
             useEffect(() => {
                 const timer = setTimeout(() => {
                     const currentText = texts[currentIndex];
-                    
+
                     if (isDeleting) {
                         setDisplayText(currentText.substring(0, displayText.length - 1));
-                        
+
                         if (displayText === '') {
                             setIsDeleting(false);
                             setCurrentIndex((prev) => (prev + 1) % texts.length);
                         }
                     } else {
                         setDisplayText(currentText.substring(0, displayText.length + 1));
-                        
+
                         if (displayText === currentText) {
                             setTimeout(() => setIsDeleting(true), 2000);
                         }
                     }
                 }, isDeleting ? speed / 2 : speed);
-                
+
                 return () => clearTimeout(timer);
             }, [displayText, currentIndex, isDeleting, texts, speed]);
-            
+
             return <span className="typing">{displayText}</span>;
         };
 
@@ -157,9 +180,9 @@
                 <div className="container mx-auto px-6 text-center">
                     <div className="fade-in visible">
                         <div className="mb-8">
-                            <img 
-                                src="images\surendra.jpg?w=300&h=300&fit=crop&crop=face" 
-                                alt="Surendra Giri Profile" 
+                            <img
+                                src="images\surendra.jpg?w=300&h=300&fit=crop&crop=face"
+                                alt="Surendra Giri Profile"
                                 className="w-60 h-60 rounded-full mx-auto shadow-2xl border-4 border-white/20 hover-glow transition-all duration-500"
                             />
                         </div>
@@ -167,21 +190,21 @@
                             Surendra Giri
                         </h1>
                         <h2 className="text-2xl md:text-3xl mb-6 font-light">
-                            <TypewriterText texts={['AI & Web Developer', 'Data Science Enthusiast', 'Machine Learning Specialist', 'Problem Solver']} />
+                            <TypewriterText texts={['Data Science Enthusiast', 'Machine Learning Specialist', 'Problem Solver', 'Learner']} />
                         </h2>
                         <p className="text-xl mb-8 max-w-2xl mx-auto leading-relaxed">
-                            Building intelligent web solutions with AI, Machine Learning, and modern web technologies
+                            Leveraging data science, machine learning, and statistical modeling to uncover insights and drive data-informed decision making.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <a 
-                                href="#projects" 
+                            <a
+                                href="#projects"
                                 className="bg-white text-indigo-600 px-8 py-4 rounded-full font-semibold hover-glow transition-all duration-300 inline-flex items-center justify-center"
                             >
                                 <i className="fas fa-rocket mr-2"></i>
                                 View My Work
                             </a>
-                            <a 
-                                href="#contact" 
+                            <a
+                                href="#contact"
                                 className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-indigo-600 transition-all duration-300 inline-flex items-center justify-center"
                             >
                                 <i className="fas fa-envelope mr-2"></i>
@@ -198,36 +221,36 @@
                 <div className="container mx-auto px-6">
                     <div className="max-w-4xl mx-auto">
                         <h2 className="text-5xl font-bold text-center mb-16 gradient-text fade-in visible">About Me</h2>
-                        
+
                         <div className="grid md:grid-cols-2 gap-12 items-center">
                             <div className="fade-in visible">
-                                <img 
-                                    src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=600&fit=crop" 
-                                    alt="Surendra at work" 
+                                <img
+                                    src="images\data-science.jpg"
+                                    alt="Surendra at work"
                                     className="rounded-2xl shadow-2xl transition-transform duration-500 hover:scale-105"
                                 />
                             </div>
-                            
+
                             <div className="fade-in visible">
-                                <h3 className="text-3xl font-bold mb-6 text-gray-800">Passionate AI & Web Developer</h3>
+                                <h3 className="text-3xl font-bold mb-6 text-gray-800">Data Scientist & AI Enthusiast</h3>
                                 <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                                    With expertise in Python, Django, and AI technologies, I specialize in developing 
-                                    intelligent web applications and data-driven solutions. My focus is on Machine Learning, 
-                                    Deep Learning, and Data Science.
+                                    I specialize in extracting insights from complex data using statistical analysis, machine learning,
+                                    and data visualization. My expertise lies in Python, Pandas, Scikit-learn, and deep learning frameworks
+                                    like TensorFlow and PyTorch.
                                 </p>
                                 <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                                    I hold a Bachelor's degree in Computer Science from Herald College Kathmandu, 
-                                    affiliated with the University of Wolverhampton. I'm passionate about leveraging AI 
-                                    to solve real-world problems and continuously exploring new technologies.
+                                    With a Bachelor's degree in Computer Science from Herald College Kathmandu,
+                                    affiliated with the University of Wolverhampton, I’m passionate about using data to drive decision-making,
+                                    build predictive models, and solve real-world challenges through data science and AI.
                                 </p>
-                                
+
                                 <div className="grid grid-cols-2 gap-6">
                                     <div className="text-center p-4 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl">
-                                        <div className="text-3xl font-bold text-indigo-600 mb-2">4+</div>
-                                        <div className="text-gray-600">Years Experience</div>
+                                        <div className="text-3xl font-bold text-indigo-600 mb-2">Freasher</div>
+                                        <div className="text-gray-600">No Years Experience</div>
                                     </div>
                                     <div className="text-center p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl">
-                                        <div className="text-3xl font-bold text-purple-600 mb-2">50+</div>
+                                        <div className="text-3xl font-bold text-purple-600 mb-2">10+</div>
                                         <div className="text-gray-600">Projects Completed</div>
                                     </div>
                                 </div>
@@ -238,12 +261,13 @@
             </section>
         );
 
-        const ProjectCard = ({ title, description, technologies, github, demo, image }) => (
+
+        const ProjectCard = ({ title, description, technologies, github, image }) => (
             <div className="bg-white rounded-2xl shadow-xl p-6 hover-glow transition-all duration-500 fade-in visible">
                 <div className="relative overflow-hidden rounded-xl mb-6">
-                    <img 
-                        src={image} 
-                        alt={title} 
+                    <img
+                        src={image}
+                        alt={title}
                         className="w-full h-48 object-cover transition-transform duration-500 hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
@@ -251,16 +275,13 @@
                             <a href={github} target="_blank" className="inline-flex items-center px-4 py-2 bg-white/20 rounded-full backdrop-blur-sm hover:bg-white/30 transition-colors">
                                 <i className="fab fa-github mr-2"></i>Code
                             </a>
-                            <a href={demo} target="_blank" className="inline-flex items-center px-4 py-2 bg-indigo-600/80 rounded-full backdrop-blur-sm hover:bg-indigo-600 transition-colors">
-                                <i className="fas fa-external-link-alt mr-2"></i>Demo
-                            </a>
                         </div>
                     </div>
                 </div>
-                
+
                 <h3 className="text-2xl font-bold mb-3 text-gray-800">{title}</h3>
                 <p className="text-gray-600 mb-4 leading-relaxed">{description}</p>
-                
+
                 <div className="flex flex-wrap gap-2 mb-4">
                     {technologies.split(', ').map((tech, i) => (
                         <span key={i} className="px-3 py-1 bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-800 rounded-full text-sm font-medium">
@@ -272,62 +293,94 @@
         );
 
         const Projects = () => {
-            const projects = [
-                {
-                    title: "AI-Powered Recommendation System",
-                    description: "A machine learning-based platform for personalized content recommendations using advanced algorithms.",
-                    technologies: "Python, Django, TensorFlow, PostgreSQL, Scikit-learn",
-                    github: "https://github.com",
-                    demo: "https://example.com",
-                    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=300&fit=crop"
-                },
-                {
-                    title: "Data Visualization Dashboard",
-                    description: "Interactive dashboard for real-time data analysis and visualization using modern web technologies.",
-                    technologies: "React, Django, D3.js, PostgreSQL, Pandas",
-                    github: "https://github.com",
-                    demo: "https://example.com",
-                    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop"
-                },
-                {
-                    title: "Deep Learning Image Classifier",
-                    description: "AI-powered image classification system built with deep learning frameworks for accurate predictions.",
-                    technologies: "Python, TensorFlow, Keras, Flask, AWS",
-                    github: "https://github.com",
-                    demo: "https://example.com",
-                    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=400&h=300&fit=crop"
-                }
-            ];
+    const projects = [
+        {
+            title: "NewsPulse – News Platform for Nepal 🇳🇵",
+            description: "A centralized, intelligent platform for posting, broadcasting, and recommending news, featuring role-based dashboards, sentiment analysis, live streaming, and AI-powered personalization.",
+            technologies: "React.js, Django, PostgreSQL, Tailwind CSS, TextBlob, YouTube API, JWT, OAuth 2.0",
+            github: "https://github.com",
+            image: "images/NewsPulse.jpg"
+        },
+        {
+            title: "Twitter Trend Prediction",
+            description: "Conducted EDA, sentiment analysis, and model training (Logistic Regression, Random Forest, SVM, KNN) to predict Twitter trends with high accuracy.",
+            technologies: "Python, Pandas, Scikit-learn, Matplotlib, Seaborn",
+            github: "https://github.com/Surendra-G/Artificial-Intelligence-Machine-Learning-Project",
+            image: "images/twitter-trend.jpg"
+        },
+        {
+            title: "Car Price Prediction",
+            description: "Solved a regression problem using Linear Regression and Random Forest. Performed feature engineering and model evaluation to predict car prices accurately.",
+            technologies: "Python, Pandas, Scikit-learn, Matplotlib",
+            github: "https://github.com/Surendra-G/Artificial-Intelligence-Machine-Learning-Project",
+            image: "images/car.jpg"
+        },
+        {
+            title: "Coronary Heart Disease Prediction",
+            description: "Developed a classification model using Logistic Regression and Decision Tree to predict the likelihood of heart disease based on patient data.",
+            technologies: "Python, Scikit-learn, Pandas, Seaborn",
+            github: "https://github.com/Surendra-G/Artificial-Intelligence-Machine-Learning-Project",
+            image: "images/heart.jpg"
+        },
+        {
+            title: "News Headline Text Classification",
+            description: "Built RNN, LSTM, and LSTM with GloVe models to classify headlines into categories like Sports, Tech, and Education. LSTM+GloVe achieved best accuracy.",
+            technologies: "Python, TensorFlow, NLTK",
+            github: "https://github.com/Surendra-G/Artificial-Intelligence-Machine-Learning-Project",
+            image: "images/news.png"
+        },
+        {
+            title: "Flower Image Classification",
+            description: "Classified flower images using CNNs and transfer learning (VGG16). Used augmentation and fine-tuning for improved generalization and reduced training time.",
+            technologies: "Python, TensorFlow, OpenCV, Keras",
+            github: "https://github.com/Surendra-G/Artificial-Intelligence-Machine-Learning-Project",
+            image: "images/flower-classification.jpg"
+        }
+    ];
 
-            return (
-                <section id="projects" className="py-20 bg-gradient-to-br from-gray-50 to-indigo-50">
-                    <div className="container mx-auto px-6">
-                        <h2 className="text-5xl font-bold text-center mb-16 gradient-text fade-in visible">Featured Projects</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {projects.map((project, index) => (
-                                <ProjectCard key={index} {...project} />
-                            ))}
-                        </div>
-                    </div>
-                </section>
-            );
-        };
+    return (
+        <section id="projects" className="py-20 bg-gradient-to-br from-gray-50 to-indigo-50">
+            <div className="container mx-auto px-6">
+                <h2 className="text-5xl font-bold text-center mb-16 gradient-text fade-in visible">Featured Projects</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {projects.map((project, index) => (
+                        <ProjectCard key={index} {...project} />
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+};
+
 
         const Skills = () => {
             const skills = [
                 { name: "Python", level: 95 },
-                { name: "Django", level: 90 },
-                { name: "Machine Learning", level: 92 },
-                { name: "Deep Learning", level: 88 },
+                { name: "Django", level: 80 },
+                { name: "Machine Learning", level: 85 },
+                { name: "Deep Learning", level: 80 },
                 { name: "Data Science", level: 90 },
-                { name: "AI Enthusiast", level: 85 }
+                { name: "AI & ML", level: 85 },
+                { name: "NumPy", level: 90 },
+                { name: "Pandas", level: 90 },
+                { name: "Scikit-learn", level: 85 },
+                { name: "TensorFlow", level: 80 },
+                { name: "Keras", level: 80 },
+                { name: "OpenCV", level: 70 },
+                { name: "Matplotlib", level: 85 },
+                { name: "Seaborn", level: 80 },
+                { name: "SQL", level: 75 },
+                { name: "Docker", level: 70 },
+                { name: "CI/CD", level: 65 },
+                { name: "Git & GitHub", level: 85 }
+
             ];
 
             return (
                 <section id="skills" className="py-20 bg-white">
                     <div className="container mx-auto px-6">
                         <h2 className="text-5xl font-bold text-center mb-16 gradient-text fade-in visible">Skills & Expertise</h2>
-                        
+
                         <div className="max-w-4xl mx-auto">
                             <div className="grid md:grid-cols-2 gap-8">
                                 {skills.map((skill, index) => (
@@ -337,7 +390,7 @@
                                             <span className="text-indigo-600 font-bold">{skill.level}%</span>
                                         </div>
                                         <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-                                            <div 
+                                            <div
                                                 className="h-full bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full transition-all duration-1000"
                                                 style={{ width: `${skill.level}%` }}
                                             ></div>
@@ -354,20 +407,22 @@
         const Blog = () => {
             const posts = [
                 {
-                    title: "Building Scalable Web Apps with Django",
-                    description: "A comprehensive guide to creating robust web applications using Django and Python.",
+                    title: "NewsPulse – News Platform for Nepal 🇳🇵",
+                    description: "A centralized, intelligent platform for posting, broadcasting, and recommending news, featuring role-based dashboards, sentiment analysis, live streaming, and AI-powered personalization.",
                     date: "Jan 15, 2025",
                     readTime: "8",
-                    category: "Django",
-                    image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=300&fit=crop"
+                    category: "Web Development",
+                    link: "https://www.linkedin.com/posts/surendra-giri-4823b830b_excited-to-share-my-final-year-project-activity-7331573866365894656--nvp?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE7nR6IBYim8PhNH0tdBtMORvYR06FUfU04",
+                    image: "images/NewsPulse.jpg"
                 },
                 {
-                    title: "Introduction to Machine Learning with Python",
-                    description: "Learn the basics of Machine Learning with practical Python examples.",
+                    title: "Twitter Trend Prediction - Machine Learning Project",
+                    description: "Conducted EDA, sentiment analysis, and model training (Logistic Regression, Random Forest, SVM, KNN) to predict Twitter trends with high accuracy.",
                     date: "Jan 10, 2025",
                     readTime: "6",
                     category: "Machine Learning",
-                    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=400&h=300&fit=crop"
+                    link: "https://www.linkedin.com/posts/surendra-giri-4823b830b_machinelearning-deeplearning-nlp-activity-7332270134171979777-n_iD?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE7nR6IBYim8PhNH0tdBtMORvYR06FUfU04",
+                    image: "images/news.png"
                 }
             ];
 
@@ -398,11 +453,11 @@
                                             {post.title}
                                         </h3>
                                         <p className="text-gray-600 mb-4">{post.description}</p>
-                                        <a 
-                                            href="#" 
+                                        <a
+                                            href={post.link}
                                             className="inline-flex items-center text-indigo-600 hover:text-indigo-800 font-semibold transition-colors"
                                         >
-                                            Read More 
+                                            Read More
                                             <i className="fas fa-arrow-right ml-2"></i>
                                         </a>
                                     </div>
@@ -422,8 +477,8 @@
                         <p className="text-xl mb-8 text-gray-600">
                             Download my resume to explore my professional journey, including my Bachelor’s in Computer Science from Herald College Kathmandu (University of Wolverhampton).
                         </p>
-                        <a 
-                            href="#" 
+                        <a
+                            href="https://drive.google.com/file/d/1gAa9cMQYwmPUETuNwXI-rtQssOwiWYVG/view"
                             className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold hover-glow transition-all duration-300 inline-flex items-center"
                         >
                             <i className="fas fa-download mr-2"></i>
@@ -434,117 +489,80 @@
             </section>
         );
 
-        const Contact = () => {
-            const [formData, setFormData] = useState({
-                name: '',
-                email: '',
-                message: ''
-            });
-
-            const handleSubmit = (e) => {
-                e.preventDefault();
-                if (formData.name && formData.email && formData.message) {
-                    alert('Message sent successfully!');
-                    setFormData({ name: '', email: '', message: '' });
-                } else {
-                    alert('Please fill out all fields.');
-                }
-            };
-
-            const handleChange = (e) => {
-                setFormData({
-                    ...formData,
-                    [e.target.name]: e.target.value
-                });
-            };
-
-            return (
-                <section id="contact" className="py-20 bg-gradient-to-br from-indigo-50 to-purple-50">
-                    <div className="container mx-auto px-6">
-                        <h2 className="text-5xl font-bold text-center mb-16 gradient-text fade-in visible">Get In Touch</h2>
-                        <div className="max-w-2xl mx-auto">
-                            <div className="bg-white rounded-2xl shadow-2xl p-8 mb-12 fade-in visible">
-                                <h3 className="text-2xl font-bold mb-6 text-gray-800">Contact Information</h3>
-                                <div className="space-y-4 text-gray-600">
-                                    <p className="flex items-center text-gray-800">
-                                        <i className="fas fa-user mr-3 text-gray-800"></i>
-                                        Surendra Giri
-                                    </p>
-                                    <p className="flex items-center text-gray-800">
-                                        <i className="fas fa-envelope mr-3 text-gray-800"></i>
-                                        <a href="mailto:girisurendra@gmail.com">girisurendra321@gmail.com</a>
-                                    </p>
-                                    <p className="flex items-center text-gray-800">
-                                        <i className="fas fa-phone mr-3 text-gray-800"></i>
-                                        <a href="tel:9854544">9865458514</a>
-                                    </p>
-                                </div>
+        const Contact = () => (
+            <section id="contact" className="py-20 bg-gradient-to-br from-indigo-50 to-purple-50">
+                <div className="container mx-auto px-6">
+                    <h2 className="text-5xl font-bold text-center mb-16 gradient-text fade-in visible">Get In Touch</h2>
+                    <div className="max-w-2xl mx-auto">
+                        <div className="bg-white rounded-2xl shadow-2xl p-8 fade-in visible">
+                            <h3 className="text-2xl font-bold mb-6 text-gray-800">Contact Information</h3>
+                            <div className="space-y-4 text-gray-600">
+                                <p className="flex items-center text-gray-800">
+                                    <i className="fas fa-user mr-3 text-gray-800"></i>
+                                    Surendra Giri
+                                </p>
+                                <p className="flex items-center text-gray-800">
+                                    <i className="fas fa-envelope mr-3 text-gray-800"></i>
+                                    <a href="mailto:girisurendra321@gmail.com" className="hover:underline">girisurendra321@gmail.com</a>
+                                </p>
+                                <p className="flex items-center text-gray-800">
+                                    <i className="fas fa-phone mr-3 text-gray-800"></i>
+                                    <a href="tel:9865458514" className="hover:underline">9865458514</a>
+                                </p>
                             </div>
-                            <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-2xl p-8 fade-in visible">
-                                <div className="mb-6">
-                                    <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">Name</label>
-                                    <input 
-                                        type="text" 
-                                        name="name"
-                                        value={formData.name}
-                                        onChange={handleChange}
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
-                                        required 
-                                    />
-                                </div>
-                                <div className="mb-6">
-                                    <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">Email</label>
-                                    <input 
-                                        type="email" 
-                                        name="email"
-                                        value={formData.email}
-                                        onChange={handleChange}
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
-                                        required 
-                                    />
-                                </div>
-                                <div className="mb-6">
-                                    <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">Message</label>
-                                    <textarea 
-                                        name="message"
-                                        value={formData.message}
-                                        onChange={handleChange}
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all" 
-                                        rows="5" 
-                                        required
-                                    ></textarea>
-                                </div>
-                                <button 
-                                    type="submit"
-                                    className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-4 rounded-lg font-semibold hover-glow transition-all duration-300"
+
+                            <div className="mt-6 flex space-x-6 justify-center">
+                                <a
+                                    href="https://www.linkedin.com/in/surendra-giri-4823b830b/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="LinkedIn"
+                                    className="transition-colors"
+                                    style={{ color: '#0A66C2' }} // LinkedIn Blue
+                                    onMouseOver={(e) => (e.currentTarget.style.color = '#004182')} // Darker shade for hover
+                                    onMouseOut={(e) => (e.currentTarget.style.color = '#0A66C2')}
                                 >
-                                    <i className="fas fa-paper-plane mr-2"></i>
-                                    Send Message
-                                </button>
-                            </form>
-                            
-                            <div className="mt-12 flex justify-center space-x-6 fade-in visible">
-                                <a href="https://www.linkedin.com/in/surendra-giri-4823b830b/" target="_blank" className="text-gray-600 hover:text-indigo-600 transition-colors">
                                     <i className="fab fa-linkedin text-3xl"></i>
                                 </a>
-                                <a href="https://github.com/Surendra-G" target="_blank" className="text-gray-600 hover:text-indigo-600 transition-colors">
+                                <a
+                                    href="https://github.com/Surendra-G"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="GitHub"
+                                    className="transition-colors"
+                                    style={{ color: '#181717' }} // GitHub Black
+                                    onMouseOver={(e) => (e.currentTarget.style.color = '#000000')} // Pure black for hover
+                                    onMouseOut={(e) => (e.currentTarget.style.color = '#181717')}
+                                >
                                     <i className="fab fa-github text-3xl"></i>
                                 </a>
-                                <a href="https://twitter.com" target="_blank" className="text-gray-600 hover:text-indigo-600 transition-colors">
-                                    <i className="fab fa-twitter text-3xl"></i>
+                                <a
+                                    href="https://www.instagram.com/surendra___g?igsh=MTJpaDg4NGp4Z3dpbA%3D%3D&utm_source=qr"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Instagram"
+                                    className="transition-colors"
+                                    style={{ color: '#E4405F' }} // Instagram Pink
+                                    onMouseOver={(e) => (e.currentTarget.style.color = '#C13584')} // Instagram Purple for hover
+                                    onMouseOut={(e) => (e.currentTarget.style.color = '#E4405F')}
+                                >
+                                    <i className="fab fa-instagram text-3xl"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
-                </section>
-            );
-        };
+                </div>
+            </section>
+        );
+
+
+
 
         const Footer = () => (
             <footer className="bg-gray-900 text-white py-8">
                 <div className="container mx-auto px-6 text-center">
                     <p className="text-lg">© 2025 Surendra Giri.</p>
-                    <p className="text-gray-400 mt-2">Lovley Meeting you ❤️. Have a Great Day 🙏</p>
+                    <p className="text-gray-400 mt-2">Lovely Meeting you ❤️. Have a Great Day 🙏</p>
                 </div>
             </footer>
         );
@@ -588,4 +606,5 @@
         ReactDOM.render(<App />, document.getElementById('root'));
     </script>
 </body>
+
 </html>
